@@ -1,95 +1,41 @@
 ---
 title: Hacker Light
-description: Cool led lamp build with WLED, WS2812B and ESP32
+description: Cool LED lamp build with WLED, WS2812B, and ESP32
 date: 2024-08-01
 ---
+![Hacker Light](/assets/hacklamp.webp)
 
-# Hacker Light Project Guide
+## Why
 
-Build your own customizable LED lamp using WLED, WS2812B LEDs, and an ESP32!
+I love coding at night, but I couldn't find any cool lamp to place behind my laptop for some ambient light. So, I decided to create my own (inspired by Infowski at Warsaw Hacker Space).
 
-## Table of Contents
+## What do you need?
 
-1. [Introduction](#introduction)
-2. [Components](#components)
-3. [Hardware Setup](#hardware-setup)
-4. [Software Setup](#software-setup)
-5. [Assembly](#assembly)
-6. [Usage](#usage)
-7. [Customization](#customization)
-8. [Troubleshooting](#troubleshooting)
+**Materials**
+- Old lamp (I bought mine from olx.pl, but eBay or your mama's basement should also work)
+- ESP32 microcontroller
+- WS2812B LED strip (length depends on your design; for my project, I used ~2.5m of 60 LEDs per meter strip)
+- Power supply (capacity depends on the number of LEDs. Generally, you need 5V. For my project, 10A was more than enough)
+- Micro-USB cable (to connect the ESP32 to your laptop)
+- Jumper wires
 
-## Introduction
+**Tools**
+- Laptop
+- Soldering iron and accessories
 
-The Hacker Lamp is a DIY project that combines the power of an ESP32 microcontroller with the versatility of WS2812B LED strips, all controlled by the feature-rich WLED firmware. This project allows you to create a fully customizable lamp with various lighting effects, controllable via Wi-Fi.
+## Setup & Learning
 
-## Components
+There are many tutorials online on how to set it up, so watch them carefully to avoid some stupid mistakes. I followed this [tutorial](https://www.youtube.com/watch?v=exAWzMfmwQ8).
+You can also watch this [Soldering Tutorial](https://www.youtube.com/watch?v=apSz3NXYlx8) if you are new to this topic.
 
--   ESP32 development board
--   WS2812B LED strip (length depends on your design)
--   5V power supply (capacity depends on the number of LEDs)
--   Micro-USB cable
--   Lamp shade or enclosure (can be 3D printed or store-bought)
--   Jumper wires
--   Optional: capacitor (1000μF, 6.3V or higher) for power stabilization
+## Building
 
-## Hardware Setup
+Now, what you need to do is rip apart the old lamp and put inside it the LED strip, ESP32, and power supply.
 
-1. Connect the WS2812B LED strip to the ESP32:
+## Connecting
 
-    - Connect GND on the LED strip to GND on the ESP32
-    - Connect 5V on the LED strip to the 5V output of your power supply
-    - Connect DIN (Data In) on the LED strip to GPIO 2 on the ESP32
+Then, you need to connect your ESP32 to the internet. Follow [this tutorial](https://www.youtube.com/watch?v=TOEnFKLm9Sw&).
 
-2. If using a capacitor, connect it between 5V and GND close to the start of the LED strip.
+## Enjoy Night Hacking 😉
 
-3. Connect the ESP32 to your computer using the Micro-USB cable.
-
-## Software Setup
-
-1. Install the Arduino IDE on your computer.
-
-2. Add ESP32 board support to Arduino IDE:
-
-    - Go to File > Preferences
-    - Add `https://dl.espressif.com/dl/package_esp32_index.json` to Additional Board Manager URLs
-    - Go to Tools > Board > Boards Manager, search for ESP32, and install
-
-3. Install the WLED firmware:
-
-    - Download the latest release from [WLED GitHub](https://github.com/Aircoookie/WLED/releases)
-    - In Arduino IDE, go to Sketch > Include Library > Add .ZIP Library and select the downloaded WLED file
-
-4. Configure and upload WLED:
-    - Open the WLED sketch in Arduino IDE
-    - Set the board to ESP32 Dev Module
-    - Select the correct port
-    - Upload the sketch to your ESP32
-
-## Assembly
-
-1. Place the ESP32 and power supply inside your chosen enclosure.
-2. Attach the WS2812B LED strip to the inside of your lamp shade or enclosure.
-3. Ensure all connections are secure and insulated.
-
-## Usage
-
-1. Power on your Hacker Lamp.
-2. Connect to the "WLED-AP" Wi-Fi network from your phone or computer.
-3. Open a web browser and navigate to `http://4.3.2.1`
-4. Follow the setup wizard to connect your lamp to your home Wi-Fi network.
-5. Use the WLED interface to control your lamp, change colors, and set up effects.
-
-## Customization
-
--   Experiment with different LED arrangements in your lamp design.
--   Create custom effects using the WLED user interface.
--   Integrate with home automation systems like Home Assistant or Node-RED.
-
-## Troubleshooting
-
--   If LEDs don't light up, double-check all connections and ensure proper power supply.
--   If Wi-Fi connection fails, try resetting the ESP32 and reconfiguring.
--   For more help, visit the [WLED Discord](https://discord.gg/KuqP7NE) or [WLED Forum](https://wled.discourse.group/).
-
-Happy hacking!
+Your hacker light is ready :) Have fun building some amazing things with good lighting!
