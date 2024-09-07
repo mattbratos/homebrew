@@ -1,7 +1,10 @@
 ---
 title: Hacker Light
 description: Cool LED lamp build with WLED, WS2812B, and ESP32
-date: 2024-08-01
+tags:
+  - WLED
+  - WS2812B
+  - ESP32
 ---
 
 ## Why
