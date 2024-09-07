@@ -7,6 +7,8 @@ tags:
   - ESP32
 ---
 
+![hackerlight](../assets/hackerlight.webp)
+
 ## Why
 
 I love coding at night, but I couldn't find any cool lamp to place behind my laptop for some ambient light. So, I decided to create my own (inspired by Infowski at Warsaw Hacker Space).
@@ -14,6 +16,7 @@ I love coding at night, but I couldn't find any cool lamp to place behind my lap
 ## What do you need?
 
 **Materials**
+
 - Old lamp (I bought mine from olx.pl, but eBay or your mama's basement should also work)
 - ESP32 microcontroller
 - WS2812B LED strip (length depends on your design; for my project, I used ~2.5m of 60 LEDs per meter strip)
@@ -22,6 +25,7 @@ I love coding at night, but I couldn't find any cool lamp to place behind my lap
 - Jumper wires
 
 **Tools**
+
 - Laptop
 - Soldering iron and accessories
 
