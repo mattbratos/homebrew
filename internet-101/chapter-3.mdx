@@ -1,0 +1,106 @@
+---
+title: data-transmission
+---
+
+# Chapter 3: Data Transmission
+
+## Objectives
+- Describe how data travels over the internet.
+- Understand packet-switching and the TCP/IP protocol suite.
+
+## Introduction to Data Transmission
+In this chapter, we'll dive into the nuts and bolts of how data moves from one place to another over the internet. Data transmission is the fundamental concept that makes the internet work. From sending an email to streaming a video, data transmission is always at play. 
+
+You'll learn about the TCP/IP model, data packets, and the mechanisms that ensure data reaches its destination accurately and efficiently.
+
+## Basics of Data Packets
+Data on the internet is transmitted in small chunks called packets. These packets are like the digital equivalent of envelopes containing pieces of the message you're sending.
+
+### What is a Data Packet?
+A data packet consists of two main parts:
+- Header: Contains metadata about the packet, such as source and destination IP addresses, sequence number, and data type.
+- Payload: The actual data being transmitted.
+
+### Example Packet Structure
+Here’s a simplified example of what a data packet's structure might look like:
+
+```plaintext
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| Source IP Address            | Destination IP Address         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| Sequence Number              | Acknowledgment Number          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| Data Packet Payload (the actual data being sent)              |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+### Exercises
+1. **Packet Construction Exercise**: Choose any message (e.g., "Hello, World!"). Break it down into smaller parts and construct data packets with imaginary headers.
+
+## TCP/IP Model: Layers and Functions
+The TCP/IP model is the backbone of data communication over the internet. It has four layers, each with specific functions.
+
+### Layers of the TCP/IP Model
+1. **Application Layer**: Facilitates communication between software applications and lower layers.
+   - Example Protocols: HTTP, FTP, SMTP
+2. **Transport Layer**: Ensures complete data transfer and error-checking.
+   - Example Protocols: TCP, UDP
+3. **Internet Layer**: Handles the routing of data packets.
+   - Example Protocols: IP, ICMP
+4. **Network Interface Layer**: Deals with physical transmission of data over a network.
+   - Example Technologies: Ethernet, Wi-Fi
+
+### TCP and UDP: Transport Layer Protocols
+- **TCP (Transmission Control Protocol)**: Reliable, connection-oriented protocol ensuring data is received in order and without errors.
+- **UDP (User Datagram Protocol)**: Faster but less reliable, used for applications where speed is crucial (e.g., online gaming, video streaming).
+
+### Practical Example: TCP vs. UDP
+```python
+import socket
+
+# TCP Example
+tcp_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+tcp_sock.connect(('example.com', 80))
+tcp_sock.sendall(b'GET / HTTP/1.1\r\nHost: example.com\r\n\r\n')
+response = tcp_sock.recv(1024)
+print(response)
+tcp_sock.close()
+```
+
+```python
+# UDP Example
+udp_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+udp_sock.sendto(b'Hello', ('example.com', 12345))
+response, _ = udp_sock.recvfrom(1024)
+print(response)
+udp_sock.close()
+```
+
+### Exercises
+1. **TCP/UDP Implementation**: Write a simple client-server program to demonstrate both TCP and UDP protocols.
+
+## Packet-Switching vs. Circuit-Switching
+Data transmission can use packet-switching or circuit-switching, each with different attributes and use cases.
+
+### Packet-Switching
+- **Concept**: Data is broken into packets and each packet can take a different route to the destination.
+- **Advantages**: Efficient use of network resources, more robust and scalable.
+  
+### Circuit-Switching
+- **Concept**: A dedicated communication path is established between sender and receiver for the duration of the session.
+- **Advantages**: Consistent and predictable performance, suitable for voice and video calls.
+
+### Visualization Example
+Consider a postal system (packet-switching) vs. a direct phone line (circuit-switching):
+- In the postal system, each letter (packet) can take different routes to reach the destination.
+- In a phone call, a direct line (circuit) is established between parties, ensuring a constant connection.
+
+### Exercises
+1. **Comparison Practice**: Create a table comparing the advantages and disadvantages of packet-switching and circuit-switching. Provide real-world examples for each.
+
+## Chapter Summary
+In this chapter, we explored how data travels over the internet via packets. We covered the TCP/IP model and its layers, focusing on how different protocols work at each layer. Additionally, we discussed the differences between packet-switching and circuit-switching.
+
+Understanding these concepts is crucial for troubleshooting network issues, optimizing performance, and ensuring secure data transmission. Now, you're equipped with the foundational knowledge to delve deeper into more advanced networking topics.
+
+Next up, we'll look into the Domain Name System (DNS) and how it translates human-readable domain names into IP addresses.

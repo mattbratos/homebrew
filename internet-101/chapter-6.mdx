@@ -1,0 +1,133 @@
+---
+title: network-diagnostics
+---
+
+# Chapter 6 - Network Diagnostics
+
+## Introduction to Network Diagnostics
+
+Welcome to Chapter 6 of Internet 101! In this chapter, we will dive into the world of network diagnostics. Just like a mechanic needs tools to diagnose car issues, network engineers and developers need diagnostic tools to troubleshoot and understand network problems. We will cover some fundamental tools: `ping`, `traceroute`, and `nslookup`. These tools will help you test network connectivity, track data paths, and perform DNS queries.
+
+By the end of this chapter, you will be able to:
+- Perform basic network diagnostics.
+- Use diagnostic tools like `ping`, `traceroute`, and `nslookup` effectively.
+
+## Introduction to Network Diagnostic Tools
+
+Network diagnostic tools are essential for troubleshooting and ensuring smooth network operations. Here are three key tools:
+
+- `ping`: Tests connectivity between devices.
+- `traceroute`: Tracks the path data takes to reach its destination.
+- `nslookup`: Performs DNS queries to resolve domain names to IP addresses.
+
+### Using `ping` to Test Connectivity
+
+The `ping` command is used to test the reachability of a host on an IP network. It sends ICMP Echo Request packets to the target host and waits for a reply.
+
+#### How to Use `ping`
+
+Here's how you can use the `ping` command:
+
+1. Open your terminal or command prompt.
+2. Type `ping` followed by the domain name or IP address of the target host.
+
+```bash
+ping google.com
+```
+
+#### Exercise: Ping Multiple Hosts
+
+1. Use the `ping` command to test connectivity to `google.com`, `facebook.com`, and `your ISP's IP address`.
+2. Note the round-trip time (RTT) and packet loss; these metrics help in assessing network performance.
+
+### Using `traceroute` to Track Data Paths
+
+The `traceroute` command helps you understand the path that your data takes to reach a destination. It lists all the hops (routers) between your source and the destination.
+
+#### How to Use `traceroute`
+
+1. Open your terminal or command prompt.
+2. Type `traceroute` followed by the target domain name or IP address.
+
+```bash
+traceroute google.com
+```
+
+On Windows, use `tracert` instead:
+
+```cmd
+tracert google.com
+```
+
+#### Exercise: Trace Routes to Different Servers
+
+1. Use the `traceroute` command to track the path to `google.com`, `facebook.com`, and a server in another country (e.g., `bbc.co.uk`).
+2. Observe the number of hops and the latency between each hop. Note how data travels through the internet.
+
+### Using `nslookup` for DNS Queries
+
+The `nslookup` command is used to query DNS servers to resolve domain names into IP addresses or vice versa. It can also provide information about various DNS records.
+
+#### How to Use `nslookup`
+
+1. Open your terminal or command prompt.
+2. Type `nslookup` followed by the domain name you want to query.
+
+```bash
+nslookup google.com
+```
+
+You can also query specific types of DNS records:
+
+```bash
+nslookup -query=MX google.com
+```
+
+#### Exercise: Perform DNS Lookups
+
+1. Use `nslookup` to find the IP address for `google.com`, `facebook.com`, and any domain you frequently visit.
+2. Query the MX (Mail Exchanger) records for your email provider's domain.
+3. Document the difference between an A record, MX record, and CNAME record.
+
+## Practical Exercises
+
+### Exercise 1: Ping Test
+
+1. Open your terminal or command prompt.
+2. Ping `google.com`:
+   ```bash
+   ping google.com
+   ```
+3. Record the average RTT.
+4. Repeat the ping for `facebook.com` and another website of your choice.
+
+### Exercise 2: Trace Route
+
+1. Trace the route to `google.com`:
+   ```bash
+   traceroute google.com
+   ```
+   On Windows:
+   ```cmd
+   tracert google.com
+   ```
+2. Record the number of hops and the RTT for each hop.
+3. Repeat for `bbc.co.uk`.
+
+### Exercise 3: DNS Lookup
+
+1. Perform an `nslookup` to find the IP address of `google.com`:
+   ```bash
+   nslookup google.com
+   ```
+2. Query the MX records for `gmail.com`:
+   ```bash
+   nslookup -query=MX gmail.com
+   ```
+3. Document your findings.
+
+## Chapter Summary
+
+In this chapter, you've learned how to use essential network diagnostic tools: `ping`, `traceroute`, and `nslookup`. These tools are indispensable for troubleshooting network issues, verifying connectivity, understanding data paths, and resolving DNS queries. By practicing with these tools, you will be better equipped to diagnose and solve network problems efficiently.
+
+Keep experimenting with different domains and IP addresses to deepen your understanding. Happy diagnosing!

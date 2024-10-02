@@ -1,0 +1,119 @@
+---
+title: domain-name-system-dns
+---
+
+# Chapter 4 - Domain Name System (DNS)
+
+## Objectives
+- Understand the purpose and function of DNS.
+- Learn how domain names are translated into IP addresses.
+
+---
+
+## Introduction to DNS
+
+Welcome to Chapter 4 of "Internet 101"! In this chapter, we'll dive into the Domain Name System (DNS), an essential component of the internet infrastructure. DNS is often referred to as the "phonebook of the internet" because it translates human-friendly domain names (like `www.example.com`) into IP addresses that computers use to identify each other on the network. 
+
+Understanding DNS is crucial for web developers and internet users alike because it affects how websites are accessed and how data is routed efficiently and accurately.
+
+---
+
+## Overview of DNS
+
+DNS is a hierarchical, distributed database system that enables human-readable hostnames to be translated into IP addresses. Without DNS, we would have to remember IP addresses for every website we wish to visit, which is impractical.
+
+### Key Components of DNS
+
+- **Domain Name**: The human-readable address, e.g., `www.example.com`.
+- **IP Address**: The numerical address that identifies a device on the network, e.g., `192.0.2.1`.
+- **DNS Server**: A server that holds DNS records and helps resolve domain names to IP addresses.
+
+### Hierarchical Structure
+
+DNS utilizes a hierarchical structure divided into different levels:
+- **Root Level**: The top level of the DNS hierarchy, represented by a dot (`.`).
+- **Top-Level Domain (TLD)**: The next level, such as `.com`, `.org`, `.net`.
+- **Second-Level Domain**: The domain name under the TLD, such as `example` in `example.com`.
+- **Subdomain**: Any domain that is a part of the second-level domain, like `www` in `www.example.com`.
+
+---
+
+## How DNS Resolution Works
+
+DNS resolution involves multiple steps where queries are passed from one DNS server to another until the correct IP address is found. Here's a simplified explanation of the process:
+
+1. **Local Cache Check**: The user's browser checks the local cache to see if it already has the IP address for the domain.
+2. **Recursive Resolver**: If not found locally, the query is sent to a recursive resolver (usually provided by the ISP), which may also have the address cached.
+3. **Root Server**: If the recursive resolver doesn't have it, the query is forwarded to one of the root DNS servers.
+4. **TLD Server**: The root server directs the query to the appropriate TLD server (.com, .org, etc.).
+5. **Authoritative Name Server**: The TLD server directs the query to the authoritative name server for the specific domain.
+6. **IPAddress Retrieval**: The authoritative server returns the IP address to the recursive resolver.
+7. **Delivery to Client**: The recursive resolver sends the IP address back to the user's browser, allowing it to establish a connection to the website.
+
+![DNS Resolution Process](https://example.com/dns-resolution-diagram.png)
+
+### Example
+
+Let's explain DNS resolution using an example:
+- You want to visit `www.example.com`.
+- Your browser sends a query to the local DNS resolver.
+- The resolver contacts the root DNS server, then the `.com` TLD server, and finally the authoritative server for `example.com`.
+- The IP address `192.0.2.1` is returned and used to connect to the website.
+
+### Practical Exercise
+
+Try using the `dig` command to observe DNS resolution:
+
+```shell
+$ dig www.example.com
+```
+
+Inspect the output to see the steps taken during the resolution process, focusing on the `ANSWER` section to find the IP address.
+
+---
+
+## Types of DNS Records
+
+DNS records hold the information that is necessary to resolve queries into human-readable domain. Different types of records serve different purposes:
+
+### Common DNS Records
+
+- **A Record (Address Record)**: Maps a domain name to an IPv4 address.
+- **AAAA Record (IPv6 Address Record)**: Maps a domain name to an IPv6 address.
+- **CNAME Record (Canonical Name Record)**: Alias of one name to another, used for subdomains.
+- **MX Record (Mail Exchange Record)**: Specifies mail servers for email traffic for the domain.
+- **TXT Record (Text Record)**: Holds text information for sources like SPF (Sender Policy Framework) records.
+
+### Example DNS Records
+
+```plaintext
+example.com.       3600    IN  A     192.0.2.1
+example.com.       3600    IN  AAAA  2001:db8::1
+www.example.com.   3600    IN  CNAME example.com.
+example.com.       3600    IN  MX    10 mail.example.com.
+example.com.       3600    IN  TXT   "v=spf1 include:_spf.example.com ~all"
+```
+
+### Practical Exercise
+
+Use the `nslookup` or `dig` commands to query different DNS records for a domain:
+
+```shell
+$ nslookup -type=A www.example.com
+$ dig AAAA example.com
+$ dig MX example.com
+```
+
+Analyze the results and understand the different types of records.
+
+---
+
+## Chapter Summary
+
+In this chapter, we've explored the Domain Name System (DNS), focusing on:
+- The purpose and function of DNS.
+- The hierarchical structure and how it operates.
+- The process of DNS resolution.
+- Different types of DNS records and their uses.
+
+To solidify your understanding, try performing the practical exercises provided and make sure to practice with different domain queries. DNS is fundamental to how the internet operates, and mastering it will enhance your ability to troubleshoot and optimize web services effectively.

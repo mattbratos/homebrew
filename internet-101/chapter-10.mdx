@@ -1,0 +1,133 @@
+---
+title: ip-addressing-and-subnetting
+---
+
+# Chapter 10 - IP Addressing and Subnetting
+
+## Introduction to IP Addressing and Subnetting
+
+Welcome, aspiring network guru! Today, we're diving deep into the bloodstream of the internet: IP addressing and subnetting. These concepts are fundamental to understanding how devices communicate over a network, ensuring your data ends up in the right place. Get ready to demystify the numbers behind the networking!
+
+## Basics of IP Addresses
+
+Let's start with the essentials.
+
+### What is an IP Address?
+
+An IP (Internet Protocol) address is a unique identifier assigned to each device connected to a network. Think of it as the digital address for your device, allowing it to communicate with other devices over the internet.
+
+### Types of IP Addresses
+
+- **IPv4**: The most common type of IP address, consisting of four 8-bit numbers separated by periods (e.g., 192.168.0.1).
+- **IPv6**: The newer version designed to replace IPv4, consisting of eight 16-bit hexadecimal numbers separated by colons (e.g., 2001:0db8:85a3:0000:0000:8a2e:0370:7334).
+
+### Public vs. Private IP Addresses
+
+- **Public IP**: Assigned by your ISP, unique on the whole internet.
+- **Private IP**: Used within a local network, not routable on the internet (e.g., 192.168.x.x).
+
+## IPv4 vs. IPv6
+
+### IPv4 Addressing
+
+IPv4 uses a 32-bit address scheme allowing for approximately 4.3 billion unique addresses. Example: `192.168.1.1`
+
+### IPv6 Addressing
+
+Due to the explosion of internet-connected devices, IPv6 was introduced. It uses a 128-bit address scheme, capable of providing a virtually limitless number of addresses. Example: `2001:0db8:85a3:0000:0000:8a2e:0370:7334`
+
+### Key Differences
+
+- **Address Length**: IPv4 is 32-bit; IPv6 is 128-bit.
+- **Notational System**: IPv4 uses dot-decimal; IPv6 uses hexadecimal colon-separated.
+- **Header Complexity**: IPv6 headers are simpler for faster processing.
+
+## Subnetting Concepts and Calculations
+
+Subnetting is about dividing a larger network into smaller, more manageable sub-networks, or subnets. It's an essential technique for optimizing network performance and managing IP addresses efficiently.
+
+### Why Subnet?
+
+- **Improved Network Performance**: Reduces broadcast traffic.
+- **Better Security**: Limits exposure of hosts.
+- **Efficient IP Address Management**: Allows for more organized allocation.
+
+### Calculating Subnets
+
+#### Subnet Mask
+
+The subnet mask divides the IP address into a network and host portion. Example: 
+
+- Default subnet mask for a class C network is 255.255.255.0.
+
+```plaintext
+IP Address:      192.168.1.10
+Subnet Mask:     255.255.255.0
+```
+
+In binary:
+
+```plaintext
+IP Address:      11000000.10101000.00000001.00001010
+Subnet Mask:     11111111.11111111.11111111.00000000
+```
+
+#### Determining Subnet Range
+
+1. **Network Address**: AND the IP address and subnet mask.
+2. **Broadcast Address**: OR the network address with the inverted subnet mask.
+
+### CIDR Notation
+
+CIDR (Classless Inter-Domain Routing) simplifies subnet masks by indicating the number of bits used for the network part with a suffix. Example:
+
+- `192.168.1.10/24` means 24 bits for the network part (255.255.255.0).
+
+### Practical Example: Subnetting a Class C Network
+
+#### Given:
+
+- IP address: `192.168.1.0`
+- Subnet mask: `255.255.255.0`
+
+Divide into 4 subnets:
+
+1. Determine new subnet mask: 255.255.255.192 (`/26`).
+
+2. Calculate subnets:
+
+- Subnet 1: `192.168.1.0` to `192.168.1.63`
+- Subnet 2: `192.168.1.64` to `192.168.1.127`
+- Subnet 3: `192.168.1.128` to `192.168.1.191`
+- Subnet 4: `192.168.1.192` to `192.168.1.255`
+
+### Exercises
+
+#### Exercise 1: Convert IP to Binary
+
+Convert the following IP address to binary:
+
+- `172.16.254.1`
+
+#### Exercise 2: Calculate Subnet Range
+
+Given the IP address `10.0.0.1/28`, determine:
+
+- Network address
+- Broadcast address
+- Number of hosts per subnet
+
+#### Exercise 3: Practical Subnetting
+
+You have an IP address range `192.168.10.0/24`. Create 8 subnets and provide the range for each subnet.
+
+## Chapter Summary
+
+In this chapter, you've learned about:
+
+- The difference between IPv4 and IPv6.
+- Public and private IP addresses.
+- The purpose and calculation of subnetting.
+- How to use CIDR notation for more efficient IP address allocation.
+
+By mastering these concepts, you'll be well-equipped to manage and optimize IP addressing in any network, giving you a solid foundation for your networking skills. Keep practicing with different IP ranges to become even more fluent in subnetting!

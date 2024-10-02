@@ -1,0 +1,169 @@
+---
+title: internet-security-basics
+---
+
+# Chapter 7: Internet Security Basics
+
+Welcome to the realm of Internet Security! In this chapter, we'll unravel the enigma of secure data transmission and encryption. We'll dive into the basics of encryption and explore the significance of SSL/TLS in ensuring secure communication over the internet. By the end of this chapter, you'll be armed with the knowledge to apply secure practices for data transmission and understand the essentials of building a secure web environment.
+
+## Objectives
+- Apply secure practices for data transmission.
+- Understand the basics of encryption and SSL/TLS.
+
+## Outline
+1. Introduction to Internet Security
+2. Basics of Encryption
+3. SSL/TLS and Secure Communication
+
+## Introduction to Internet Security
+
+### Why Internet Security Matters
+
+The internet is a vast, interconnected network that carries a wealth of information, including sensitive data like personal details, financial transactions, and proprietary information. Ensuring the security of this data as it travels across the networks is crucial, especially with the rise in cyber-attacks and data breaches. Internet security helps to:
+- Protect sensitive data from unauthorized access.
+- Ensure data integrity and prevent tampering.
+- Provide confidentiality by encrypting data.
+- Authenticate parties involved in communication.
+
+### Key Concepts in Internet Security
+
+- **Confidentiality**: Ensuring that information is accessible only to those authorized to have access.
+- **Integrity**: Safeguarding the accuracy and completeness of information.
+- **Availability**: Ensuring that authorized users have access to information and resources when needed.
+- **Authentication**: Verifying the identity of the entities involved in communication.
+- **Non-repudiation**: Ensuring that a party cannot deny the authenticity of their signature on a document or the sending of a message.
+
+## Basics of Encryption
+
+Encryption is the process of converting plain text into a coded form (ciphertext) to prevent unauthorized access. Here are some fundamental encryption concepts and techniques:
+
+### Symmetric Encryption
+
+Symmetric encryption uses the same key for both encryption and decryption. It works faster and is suitable for encrypting large amounts of data but has the disadvantage of key distribution.
+
+**Example: AES (Advanced Encryption Standard)**
+
+```python
+from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
+
+# Key generation
+key = get_random_bytes(16)
+
+# Encrypt data
+cipher = AES.new(key, AES.MODE_EAX)
+nonce = cipher.nonce
+ciphertext, tag = cipher.encrypt_and_digest(b"Secret Message")
+
+# Decrypt data
+cipher = AES.new(key, AES.MODE_EAX, nonce=nonce)
+plaintext = cipher.decrypt(ciphertext)
+
+print(f"Decrypted message: {plaintext}")
+```
+
+### Asymmetric Encryption
+
+Asymmetric encryption uses a pair of keys: a public key for encryption and a private key for decryption. It is computationally intensive and typically used for securing the key exchange process.
+
+**Example: RSA (Rivest–Shamir–Adleman)**
+
+```python
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
+
+# Key generation
+key = RSA.generate(2048)
+private_key = key.export_key()
+public_key = key.publickey().export_key()
+
+# Encrypt data
+recipient_key = RSA.import_key(public_key)
+cipher_rsa = PKCS1_OAEP.new(recipient_key)
+encrypted_message = cipher_rsa.encrypt(b"Secret Message")
+
+# Decrypt data
+private_key = RSA.import_key(private_key)
+cipher_rsa = PKCS1_OAEP.new(private_key)
+decrypted_message = cipher_rsa.decrypt(encrypted_message)
+
+print(f"Decrypted message: {decrypted_message}")
+```
+
+### Hashing
+
+Hashing converts data into a fixed-size string of characters, which is typically a digest that represents the data uniquely. It's primarily used for data integrity verification and password storage.
+
+**Example: SHA-256 Hashing**
+
+```python
+import hashlib
+
+# Hash data
+data = "Secret Message".encode()
+hash_object = hashlib.sha256(data)
+hex_dig = hash_object.hexdigest()
+
+print(f"SHA-256 hash: {hex_dig}")
+```
+
+## SSL/TLS and Secure Communication
+
+### What is SSL/TLS?
+
+TLS (Transport Layer Security) and its predecessor SSL (Secure Sockets Layer) are protocols designed to provide secure communication over a computer network. They make use of encryption to ensure privacy and data integrity between two communicating applications.
+
+### How SSL/TLS Works
+
+1. **Handshake Process**: Establish a secure connection by authenticating and creating encryption keys.
+2. **Encryption**: Use the keys to encrypt data transmitted between the client and the server.
+3. **Integrity Checks**: Verify that the data is not tampered with during transmission.
+
+### Implementing SSL/TLS
+
+For implementing SSL/TLS in a web server context, you typically need an SSL certificate from a trusted Certificate Authority (CA). You can also use tools like OpenSSL to create self-signed certificates for testing purposes.
+
+**Example: Creating a Self-Signed Certificate with OpenSSL**
+
+```bash
+# Generate a private key
+openssl genrsa -out private.key 2048
+
+# Create a Certificate Signing Request (CSR)
+openssl req -new -key private.key -out request.csr
+
+# Generate a self-signed certificate
+openssl x509 -req -days 365 -in request.csr -signkey private.key -out certificate.crt
+```
+
+### Configuring SSL/TLS in Python with Flask
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Hello, Secure World!"
+
+if __name__ == "__main__":
+    app.run(ssl_context=('certificate.crt', 'private.key'))
+```
+
+## Practical Exercises
+
+### Exercise 1: Symmetric Encryption
+1. Write a Python script that uses the AES algorithm to encrypt and decrypt a message. Use a secure key and IV (Initialization Vector).
+
+### Exercise 2: Asymmetric Encryption
+1. Create a pair of RSA keys and use them to encrypt and decrypt a message. Ensure you handle the key generation, encryption, and decryption.
+
+### Exercise 3: Implementing SSL/TLS
+1. Set up a simple Flask web server with SSL/TLS using a self-signed certificate. Make sure the server runs securely on HTTPS.
+
+## Chapter Summary
+
+In this chapter, we covered the fundamentals of internet security, delved into the basic concepts of encryption (symmetric, asymmetric, and hashing), and explored SSL/TLS for secure communication. We also provided hands-on examples and exercises to solidify your understanding. By mastering these concepts, you're well on your way to creating secure web applications and safeguarding data transmission over the internet.
+
+Happy coding, and stay secure! 🔒

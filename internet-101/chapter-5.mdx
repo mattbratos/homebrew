@@ -1,0 +1,170 @@
+---
+title: internet-protocols
+---
+
+# Chapter 5 - Internet Protocols
+
+Welcome to Chapter 5 of Internet 101! This chapter is all about understanding the key internet protocols that make web communication possible. By the end of this chapter, you will be able to identify and explain important internet protocols and distinguish between their uses.
+
+## Objectives
+
+- Identify and explain key internet protocols.
+- Distinguish between different types of protocols and their uses.
+
+## Outline
+
+- Overview of HTTP, HTTPS, and FTP.
+- Other important protocols: SMTP, IMAP, POP3.
+- Secure protocols and their significance.
+
+## 1. Introduction to Internet Protocols
+
+**Internet protocols** are the rules governing data communications over the internet. They ensure that data is transferred accurately and efficiently between devices. Think of protocols as languages that different devices use to understand each other.
+
+## 2. Overview of Key Protocols
+
+### HTTP (HyperText Transfer Protocol)
+
+HTTP is the foundation of any data exchange on the Web and a protocol used for transmitting hypertext requests and information.
+
+- **Function**: It allows the fetching of resources, such as HTML documents.
+- **Use Case**: When you type a web address in your browser, an HTTP request is sent to fetch the webpage.
+
+**Example**:
+```http
+GET /index.html HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0
+```
+
+### HTTPS (HyperText Transfer Protocol Secure)
+
+HTTPS is the secure version of HTTP. It uses encryption to secure data exchange between the client and server.
+
+- **Function**: Encrypts data to protect sensitive information from eavesdropping.
+- **Use Case**: Online banking, shopping websites.
+
+**Example**:
+```http
+GET /index.html HTTP/1.1
+Host: www.secure-site.com
+User-Agent: Mozilla/5.0
+```
+
+### FTP (File Transfer Protocol)
+
+FTP is used for the transfer of computer files between a client and server on a computer network.
+
+- **Function**: Transfer files to/from a server.
+- **Use Case**: Downloading/uploading files to a web server.
+
+**Example**:
+```python
+# Simple FTP file upload example using Python
+import ftplib
+
+ftp = ftplib.FTP("ftp.example.com")
+ftp.login("username", "password")
+ftp.storbinary("STOR filename.txt", open("filename.txt", "rb"))
+ftp.quit()
+```
+
+## 3. Other Important Protocols
+
+### SMTP (Simple Mail Transfer Protocol)
+
+SMTP is used for sending emails.
+
+- **Function**: Facilitates the transmission of email messages.
+- **Use Case**: Sending an email from an email client to a mail server.
+
+**Example**:
+```python
+import smtplib
+
+server = smtplib.SMTP("smtp.gmail.com", 587)
+server.starttls()
+server.login("youremail@example.com", "password")
+server.sendmail("youremail@example.com", "receiver@example.com", "Hello World!")
+server.quit()
+```
+
+### IMAP (Internet Message Access Protocol) and POP3 (Post Office Protocol 3)
+
+Both IMAP and POP3 are protocols used by email clients to retrieve emails from a mail server.
+
+- **IMAP (Function)**: Allows email clients to fetch and manage emails directly on the mail server.
+- **Use Case**: Synchronizing mail across multiple devices.
+- **POP3 (Function)**: Downloads emails from the server to the local device and usually deletes them from the server.
+- **Use Case**: Fetching emails on a single device.
+
+**Example (IMAP)**:
+```python
+import imaplib
+
+mail = imaplib.IMAP4_SSL("imap.gmail.com")
+mail.login("youremail@example.com", "password")
+mail.select("inbox")
+status, messages = mail.search(None, "ALL")
+for num in messages[0].split():
+  status, msg_data = mail.fetch(num, "(RFC822)")
+  print(msg_data[0][1])
+mail.logout()
+```
+
+**Example (POP3)**:
+```python
+import poplib
+
+mail = poplib.POP3_SSL("pop.gmail.com")
+mail.user("youremail@example.com")
+mail.pass_("password")
+print(mail.stat())  # Get message count
+mail.quit()
+```
+
+## 4. Secure Protocols and Their Significance
+
+### Secure Protocols
+
+Secure protocols ensure that data exchange over the network is encrypted and protected from unauthorized access.
+
+- **HTTPS**: As covered earlier, it encrypts data transfers using SSL/TLS.
+- **SFTP (SSH File Transfer Protocol)**: Ensures that file transfers are conducted over a secure SSH connection.
+
+**Example**:
+```python
+# Simple SFTP file upload example using Python
+import paramiko
+
+transport = paramiko.Transport(("hostname", 22))
+transport.connect(username="username", password="password")
+sftp = paramiko.SFTPClient.from_transport(transport)
+sftp.put("localfile.txt", "remotefile.txt")
+sftp.close()
+transport.close()
+```
+
+## 5. Practical Exercises
+
+1. **HTTP Request**: Use a tool like curl or Postman to make an HTTP GET request to "http://www.example.com".
+   - **Command Example**:
+     ```sh
+     curl http://www.example.com
+     ```
+
+2. **FTP Upload**: Upload a small text file to an FTP server using the Python code provided or a tool like FileZilla.
+
+3. **Send an Email using SMTP**: Write a script to send yourself an email using the SMTP example provided.
+
+4. **Fetch Emails using IMAP**: Write a script that fetches the latest email from your inbox using IMAP.
+
+5. **Secure File Transfer**: Transfer a file securely between two machines using SFTP.
+
+## 6. Summary
+
+In this chapter, we learned about the crucial internet protocols that facilitate data exchange over the web. We covered the basics of HTTP, HTTPS, FTP, SMTP, IMAP, and POP3, as well as the importance of secure protocols. With practical exercises, you have the opportunity to apply these concepts and solidify your understanding.
+
+By mastering these protocols, you are well on your way to becoming an adept junior web programmer, equipped with the knowledge to manage internet communications efficiently and securely.
+
+Happy coding! 🚀

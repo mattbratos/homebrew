@@ -1,0 +1,158 @@
+---
+title: building-a-simple-web-server
+---
+
+# Chapter 9: Building a Simple Web Server
+
+## Introduction to the Chapter's Topic
+
+Welcome to Chapter 9 of *Internet 101*! In this chapter, we're diving into an exciting hands-on project: building a simple web server on a Linux machine. This chapter will provide you with the foundational skills needed to set up your own web server, understand its components, and serve a basic webpage. Let's break down the steps to achieve this.
+
+By the end of this chapter, you will:
+
+- Understand what a web server is and its role in web communication.
+- Be able to set up a Linux environment conducive for running a web server.
+- Install and configure an essential web server software (Apache).
+- Serve a basic HTML webpage from your web server.
+
+---
+
+## Introduction to Web Servers
+
+### What is a Web Server?
+
+A web server is a program that uses HTTP (Hypertext Transfer Protocol) to serve files that form webpages to users, in response to their requests, which are forwarded by their computers' HTTP clients. This process is fundamental to the operation of the internet and enables webpages to be viewed in a browser.
+
+### Key Functions of a Web Server
+
+- **Hosting Websites:** Storing and managing website files (HTML, CSS, JS, images, etc.).
+- **Responding to Client Requests:** Responding to browser requests for website files.
+- **Handling Application Logic:** Running server-side code (like PHP or Python), if configured.
+- **Security Enforcement:** Implementing HTTPS for secure communication.
+
+---
+
+## Setting Up a Linux Environment
+
+### Pre-requisites
+
+Ensure you have the following:
+
+- A Linux distribution installed (Ubuntu is recommended for beginners).
+- Access to terminal (command line) and necessary permissions (sudo access).
+
+### Basic Commands and Tools
+
+Familiarize yourself with basic Linux commands:
+- `sudo`: Execute commands with superuser privileges.
+- `apt-get`: Package handling tool.
+- `nano` or `vim`: Text editors to edit configuration files.
+
+### Update and Upgrade Your System
+
+Begin by updating your package lists and upgrading your installed packages to ensure you have the latest software versions:
+
+```bash
+sudo apt-get update
+sudo apt-get upgrade
+```
+
+---
+
+## Installing and Configuring a Web Server
+
+### Installing Apache
+
+Apache is a popular open-source web server software that's easy to install and configure. To install Apache, run:
+
+```bash
+sudo apt-get install apache2
+```
+
+### Starting and Enabling Apache
+
+Start the Apache service and ensure it runs on boot:
+
+```bash
+sudo systemctl start apache2
+sudo systemctl enable apache2
+```
+
+To confirm that Apache is running, open your web browser and navigate to `http://localhost`. You should see the Apache2 Ubuntu Default Page.
+
+### Configuring Apache
+
+The main configuration file for Apache is located at `/etc/apache2/apache2.conf`. To make basic changes, you can open this file with a text editor:
+
+```bash
+sudo nano /etc/apache2/apache2.conf
+```
+
+For most basic configurations, this file may not need to be altered immediately. Let's focus on serving a webpage next.
+
+---
+
+## Serving a Basic Webpage
+
+### Creating a Simple HTML Webpage
+
+Navigate to the default directory where Apache serves files from:
+
+```bash
+cd /var/www/html
+```
+
+Create a new HTML file:
+
+```bash
+sudo nano index.html
+```
+
+Add the following HTML content to the `index.html` file:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Web Server</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>This is my first web server!</p>
+</body>
+</html>
+```
+
+Save the file and exit the text editor. You can now visit `http://localhost` in your web browser to see your new webpage!
+
+### Practical Exercises
+
+1. **Add More Content to Your Webpage:**
+   - Modify `index.html` to include an image and some styled text. Use HTML and CSS as needed.
+
+2. **Enable and Configure HTTPS:**
+   - Research how to enable HTTPS using `Let's Encrypt` and configure Apache to serve your webpage securely.
+
+3. **Host Multiple Websites:**
+   - Configure virtual hosts in Apache to host multiple websites on the same server. 
+
+### Assignments
+
+- **Basic Webpage Creation:** Create a webpage that includes an ordered list and an image with proper formatting.
+- **Report Generation:** Document each step you took, including any challenges faced and how you resolved them.
+
+---
+
+## Chapter Summary
+
+In this chapter, we've covered the essentials of setting up and running a simple web server using Apache on a Linux machine. We've gone through the installation, configuration, and serving a basic webpage. With the practical exercises and assignments provided, ensure you try out these tasks to reinforce your learning.
+
+To recap:
+- **Introduction to Web Servers:** Learned what a web server is and its role.
+- **Setting Up a Linux Environment:** Installed and prepared a Linux environment for web server setup.
+- **Installing and Configuring Apache:** Installed Apache and configured it to run on boot.
+- **Serving a Basic Webpage:** Created and served a simple HTML webpage.
+
+Putting this knowledge to practice will solidify your understanding and equip you with essential web server management skills.
+
+Next up, we'll delve into IP addressing and subnetting, critical components of network architecture!
