@@ -1,0 +1,90 @@
+---
+title: Capture and Decode Network Traffic
+description: Use a basic tool like Wireshark to capture and analyze network traffic on your computer for a short duration. Identify and categorize types of traffic.
+tags:
+  - networking
+  - analysis
+  - wireshark
+---
+# Analyze Network Traffic Project
+
+## Project Overview
+In this project, you will use a basic network analysis tool, like Wireshark, to capture and analyze network traffic on your computer. Your task is to identify and categorize different types of network traffic over a short duration. This will give you hands-on experience with real network data, helping you understand internet protocols, traffic types, and potential security issues.
+
+## Learning Objectives
+By completing this project, you will learn to:
+
+- Capture network traffic using Wireshark.
+- Analyze and categorize different types of network traffic.
+- Identify common protocols in network traffic.
+- Recognize potential security threats in network data.
+
+## Required Tools/Setup
+- Wireshark: Free and open-source packet analyzer. Download it from [Wireshark's official website](https://www.wireshark.org/).
+- A computer with an internet connection.
+- Basic understanding of network protocols (HTTP, HTTPS, DNS, etc.).
+
+## Step-by-step Instructions
+
+### Step 1: Install Wireshark
+1. Download and install Wireshark from the [official website](https://www.wireshark.org/).
+2. Follow the installation instructions appropriate for your operating system.
+
+### Step 2: Capture Network Traffic
+1. Launch Wireshark.
+2. Select your network interface (Wi-Fi or Ethernet) from the list.
+3. Click on the "Start Capturing Packets" button (the blue shark fin icon).
+
+### Step 3: Analyze Network Traffic
+1. Let Wireshark capture data for around 5-10 minutes while you perform typical internet activities (e.g., browsing, watching a video).
+2. Click on the "Stop Capturing Packets" button (the red square icon) to stop the capture.
+
+### Step 4: Filter Traffic
+1. In the Wireshark filter bar, enter `http` to filter for HTTP traffic.
+2. Similarly, you can filter for other protocols:
+   - `dns` for DNS traffic.
+   - `https` for HTTPS traffic.
+   - `tcp` or `udp` for TCP or UDP traffic.
+
+### Step 5: Identify and Categorize Traffic
+1. Look through the filtered packets and take note of:
+   - Source and destination IP addresses.
+   - Protocol used.
+   - Flags or status codes in the packet details.
+2. Categorize the packets based on their protocol:
+   - Web browsing: HTTP, HTTPS.
+   - DNS queries: DNS.
+   - Other types such as FTP, SMTP, if any.
+
+## Code Snippets
+
+### Filtering HTTP Traffic
+Use the filter field in Wireshark to enter:
+```
+http
+```
+
+### Filtering DNS Traffic
+Use:
+```
+dns
+```
+
+### Filtering HTTPS Traffic
+Use:
+```
+https
+```
+
+## Testing and Validation
+To ensure your captures and analysis are correct:
+1. Verify that the traffic you generated matches your normal internet activity.
+2. Check that the packet details (e.g., source/destination, data) are consistent with what is expected for each protocol.
+3. Cross-reference the traffic types with known internet usage patterns to ensure proper categorization.
+
+## Bonus Challenges (Optional)
+- Identify any unusual or unexpected traffic and research its origin and purpose.
+- Capture traffic from different types of devices (e.g., smartphone, IoT device) and compare traffic patterns.
+- Use Wireshark's built-in tools to generate visualizations (e.g., protocol hierarchy, flow graphs).
+
+By following and completing this project, you will gain a practical understanding of network traffic analysis and the ability to recognize common and potentially harmful network activities.

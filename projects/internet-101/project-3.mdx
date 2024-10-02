@@ -1,0 +1,108 @@
+---
+title: Discover Domain Details
+description: Use `nslookup` to find the IP addresses of a domain and explain DNS resolution with your findings.
+tags:
+  - networking
+  - dns
+  - tools
+---
+# Project: DNS Lookup and Explanation
+
+## 1. Project Overview
+In this project, you will use the `nslookup` command-line tool to find the IP addresses of a domain, such as `example.com`. You will then describe how DNS resolution works using your findings as a reference. This project will solidify your understanding of the Domain Name System (DNS) and provide practical experience with a common network diagnostic tool.
+
+## 2. Learning Objectives
+By completing this project, you will:
+- Understand the purpose and function of DNS.
+- Learn how to use the `nslookup` tool for DNS queries.
+- Describe the process of DNS resolution.
+- Gain insights into different types of DNS records.
+
+## 3. Required Tools/Setup
+- A computer with a command-line interface (CLI) or terminal.
+- Internet access to perform DNS queries.
+- Basic knowledge of using CLI commands.
+
+## 4. Step-by-Step Instructions
+
+### Step 1: Open the Command Line Interface
+Open your terminal or command-line interface on your computer. This can be Command Prompt on Windows, Terminal on macOS and Linux.
+
+### Step 2: Run the nslookup Command
+Type the following command and press Enter to find the IP addresses for `example.com`:
+```bash
+nslookup example.com
+```
+
+### Step 3: Examine the Output
+The `nslookup` command will return information about the DNS query. It should look something like this:
+```
+Server:  dns.example.net
+Address:  192.0.2.1
+
+Non-authoritative answer:
+Name:    example.com
+Addresses:  93.184.216.34
+```
+
+### Step 4: Understand DNS Resolution
+Based on the `nslookup` output:
+- The first section (Server and Address) shows the DNS server being used for the query.
+- The second section (Non-authoritative answer) provides the resolved IP addresses of the domain `example.com`.
+
+The process of DNS resolution can be broken down into these steps:
+1. A user types `example.com` in their browser.
+2. The browser checks its cache to see if it already knows the IP address for `example.com`.
+3. If not found, the request is sent to the local DNS resolver provided by your ISP.
+4. The local DNS resolver checks its cache and, if the IP is not there, contacts a root DNS server.
+5. The root server directs the resolver to a Top-Level Domain (TLD) DNS server for `.com`.
+6. The resolver contacts the TLD server, which directs it to the authoritative DNS server for `example.com`.
+7. The authoritative DNS server returns the IP address for `example.com`.
+8. The resolver sends the IP address back to the browser, which then accesses the website.
+
+### Step 5: Query for Different DNS Records
+To get more information, you can specify the type of DNS record you want to query. For example, to get MX (Mail Exchange) records, use:
+```bash
+nslookup -query=MX example.com
+```
+
+### Step 6: Analyze Different Types of DNS Records
+Common DNS record types include:
+- **A**: Address record, translates a domain to an IP address.
+- **AAAA**: IPv6 address record.
+- **MX**: Mail exchange record, specifies mail servers for a domain.
+- **CNAME**: Canonical name record, alias of one name to another.
+- **TXT**: Text records, used for various text-based data.
+
+## 5. Code Snippets
+
+### Basic nslookup Command
+```bash
+nslookup example.com
+```
+
+### Querying MX Records
+```bash
+nslookup -query=MX example.com
+```
+
+### Querying Specific DNS Server
+```bash
+nslookup example.com 8.8.8.8
+```
+
+## 6. Testing and Validation
+Verify that the `nslookup` commands return the expected results:
+1. Ensure that the domain name resolves to the correct IP addresses.
+2. Confirm that different types of DNS queries (A, MX, CNAME) return appropriate results.
+3. Cross-check the returned addresses with a web browser or other lookup tools to ensure accuracy.
+
+## 7. Bonus Challenges (Optional)
+- **Explore Reverse DNS Lookup**: Use `nslookup` to perform a reverse DNS lookup to find the domain name associated with an IP address.
+```bash
+nslookup 93.184.216.34
+```
+- **Automate nslookup with a Script**: Write a simple script to automate `nslookup` queries for multiple domains.
+- **Investigate DNS Propagation**: Change DNS settings for a domain you control and observe how quickly changes propagate by performing `nslookup` at different intervals.
+
+This project will not only enhance your understanding of DNS but also provide you with practical skills in network diagnostics. Happy learning!

@@ -1,0 +1,110 @@
+---
+title: Master Network Diagnostics
+description: Use ping, traceroute, and nslookup to diagnose network issues on google.com and explain your findings.
+tags:
+  - networking
+  - diagnostics
+  - tools
+---
+# Use Network Diagnostic Tools
+
+## 1. Project Overview
+
+In this project, you will use network diagnostic tools to perform basic diagnostics on a popular website, `google.com`. You will utilize `ping`, `traceroute`, and `nslookup` to gather information about the website's network connectivity, routing paths, and DNS resolution. You will then record and explain your findings.
+
+## 2. Learning Objectives
+
+By completing this project, you will be able to:
+
+- Use `ping` to test network connectivity and measure round-trip time (RTT)
+- Use `traceroute` to display the route packets take to the destination
+- Use `nslookup` to query DNS records and understand domain name resolution
+- Interpret the output of these tools and explain their significance
+
+## 3. Required Tools/Setup
+
+To complete this project, you will need:
+
+- A computer with internet access
+- Terminal access (Command Prompt on Windows or Terminal on macOS/Linux)
+
+## 4. Step-by-Step Instructions
+
+### Step 1: Using `ping`
+
+1. Open your terminal.
+2. Type the following command to ping `google.com`:
+   ```sh
+   ping google.com
+   ```
+3. Observe the output. This command sends ICMP echo requests to `google.com` and displays the round-trip time (RTT) for each packet.
+
+### Step 2: Interpreting `ping` Results
+
+- Check if packets are being sent and received successfully.
+- Note the time it takes for packets to travel to `google.com` and back (RTT).
+- If packets are lost or the time is unusually high, it may indicate network issues.
+
+### Step 3: Using `traceroute`
+
+1. In your terminal, type the following command to use `traceroute`:
+   - On macOS/Linux:
+     ```sh
+     traceroute google.com
+     ```
+   - On Windows:
+     ```sh
+     tracert google.com
+     ```
+2. Observe the output. This command displays the path that packets take from your computer to `google.com`, showing each hop along the way.
+
+### Step 4: Interpreting `traceroute` Results
+
+- Each line represents a hop between network devices.
+- Delays at specific hops can indicate congestion or issues at that point.
+- If `*` symbols appear, it may indicate that a hop didn't respond within the timeout.
+
+### Step 5: Using `nslookup`
+
+1. In your terminal, type the following command to use `nslookup` for `google.com`:
+   ```sh
+   nslookup google.com
+   ```
+2. Observe the output. This command queries DNS servers to resolve the domain name `google.com` into an IP address.
+
+### Step 6: Interpreting `nslookup` Results
+
+- The output shows the DNS server used to perform the query.
+- It provides the IP address(es) associated with `google.com`.
+- Verify if the DNS resolution matches the expected IP addresses for `google.com`.
+
+## 5. Code Snippets
+
+```sh
+# Ping google.com
+ping google.com
+
+# Traceroute to google.com (macOS/Linux)
+traceroute google.com
+
+# Traceroute to google.com (Windows)
+tracert google.com
+
+# DNS lookup for google.com
+nslookup google.com
+```
+
+## 6. Testing and Validation
+
+- Confirm that you can successfully run `ping`, `traceroute`, and `nslookup` commands.
+- Validate that `ping` results show successful packet delivery and reasonable RTT.
+- Ensure `traceroute` results show a complete path to `google.com` without unexplained delays or timeouts.
+- Verify `nslookup` correctly resolves `google.com` to known IP addresses.
+
+## 7. Bonus Challenges (Optional)
+
+- Try using network diagnostic tools on different websites such as `github.com` or `yourfavoritewebsite.com`.
+- Investigate and explain any differences in output between different websites.
+- Use `whois` to gather more information about the domain registration details and ownership.
+
+This project will help you become proficient in using essential network diagnostic tools and interpreting their results to assess network connectivity and performance.

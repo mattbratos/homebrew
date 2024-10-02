@@ -1,0 +1,130 @@
+---
+title: Trace Your Internet Path
+description: Draw a diagram of your internet request journey from your laptop to a web server and back. Label key components like routers, ISPs, and data centers.
+tags:
+  - networking
+  - diagram
+  - internet
+---
+# Map Your Internet Journey
+
+## Project Overview
+
+In this project, you will draw a diagram of your internet request journey from your laptop to a web server and back. You will label key components such as routers, ISPs, and data centers to better understand how data packets travel over the internet. This will help you visualize and grasp the complex infrastructure of the internet.
+
+## Learning Objectives
+
+By completing this project, you will:
+- Understand the flow of data requests from a client (your laptop) to a server.
+- Identify and label key components in the internet infrastructure.
+- Explain the role of each component in data transmission.
+- Apply knowledge of internet protocols and network topology.
+
+## Required Tools/Setup
+
+- Stable internet connection
+- Drawing software (such as Microsoft Visio, Lucidchart, or even a simple online tool like draw.io)
+- Pen and paper (if you prefer to sketch manually)
+- Basic understanding of the command line (for optional network diagnostic tasks)
+
+## Step-by-Step Instructions
+
+### Step 1: Trace Your Internet Request Using Traceroute
+
+1. Open your command-line interface.
+    - For Windows: Open Command Prompt.
+    - For macOS/Linux: Open Terminal.
+2. Type the following command and press Enter:
+
+    ```plaintext
+    traceroute google.com
+    ```
+
+    or on Windows:
+
+    ```plaintext
+    tracert google.com
+    ```
+
+3. Observe the results. You will see a list of hops that show the path your request takes to reach Google's server.
+
+### Step 2: Identify Key Components
+
+Using the traceroute results, identify the following key components:
+- **Your Machine**: This is the starting point.
+- **Local Router**: The first hop is usually your local router.
+- **ISP Gateway**: Represents your Internet Service Provider.
+- **Intermediate Routers**: These are part of the Internet backbone, managed by various networks.
+- **Destination Server**: The final hop, in this case, Google's server.
+
+### Step 3: Draw the Diagram
+
+1. Choose your drawing medium (software or sketch).
+
+2. Start by drawing your laptop as the initial node.
+    - Label it "Your Laptop".
+
+3. Draw an arrow from your laptop to your local router.
+    - Label it with its role (e.g., "Local Router").
+
+4. Continue adding nodes for each hop identified in the traceroute.
+    - Label each node with its role and number of the hop.
+
+5. End with the destination server.
+    - Label it "Destination Web Server".
+
+### Step 4: Label and Annotate
+
+1. Label the following components:
+    - **Your Laptop**
+    - **Local Router**
+    - **ISP Gateway**
+    - **Intermediate Routers**
+    - **Destination Web Server**
+
+2. Annotate each component with its role in the data transmission process.
+
+### Step 5: Verify the Diagram
+
+Review your diagram to ensure it follows the path outlined by the traceroute results and accurately represents the components involved in the journey of your internet request.
+
+## Code Snippets (Optional)
+
+Example of using traceroute in different operating systems:
+
+- **Linux/macOS**:
+
+    ```plaintext
+    traceroute google.com
+    ```
+  
+- **Windows**:
+
+    ```plaintext
+    tracert google.com
+    ```
+
+## Testing and Validation
+
+1. Cross-check your diagram with the traceroute output.
+2. Ensure all key components are labeled accurately.
+3. Explain the role of each component in the data transmission process.
+
+## Bonus Challenges (Optional)
+
+1. **Extended Traceroute**: Use traceroute to other websites and compare different paths.
+2. **Multi-Diagram**: Create diagrams for different websites and analyze similarities and differences.
+3. **Network Diagnostic Tools**: Utilize ping and nslookup commands to gather more information about network performance and DNS resolution.
+   - **Example ping command**:
+
+    ```plaintext
+    ping google.com
+    ```
+    
+   - **Example nslookup command**:
+
+    ```plaintext
+    nslookup google.com
+    ```
+
+By completing these steps, you will gain a solid understanding of internet infrastructure and the journey of your requests through the internet. Happy mapping!
